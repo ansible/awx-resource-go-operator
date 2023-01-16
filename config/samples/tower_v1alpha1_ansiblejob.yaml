@@ -1,0 +1,12 @@
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  labels:
+    app.kubernetes.io/name: ansiblejob
+    app.kubernetes.io/instance: ansiblejob-sample
+    app.kubernetes.io/part-of: awx-resource-go-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: awx-resource-go-operator
+  name: ansiblejob-sample
+spec:
+  # TODO(user): Add fields here
