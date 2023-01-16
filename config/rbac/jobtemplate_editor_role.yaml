@@ -1,0 +1,31 @@
+# permissions for end users to edit jobtemplates.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: jobtemplate-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: awx-resource-go-operator
+    app.kubernetes.io/part-of: awx-resource-go-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: jobtemplate-editor-role
+rules:
+- apiGroups:
+  - tower.ansible.com
+  resources:
+  - jobtemplates
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - tower.ansible.com
+  resources:
+  - jobtemplates/status
+  verbs:
+  - get

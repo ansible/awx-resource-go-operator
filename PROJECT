@@ -16,4 +16,13 @@ resources:
   kind: AnsibleJob
   path: github.com/ansible/awx-resource-go-operator/api/v1alpha1
   version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: ansible.com
+  group: tower
+  kind: JobTemplate
+  path: github.com/ansible/awx-resource-go-operator/api/v1alpha1
+  version: v1alpha1
 version: "3"
