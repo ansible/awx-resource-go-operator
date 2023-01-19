@@ -28,8 +28,17 @@ type AnsibleJobSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of AnsibleJob. Edit ansiblejob_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	ExtraVars            map[string]string `json:"extraVars,omitempty"`
+	Inventory            string            `json:"inventory,omitempty"`
+	JobTemplateName      string            `json:"jobTemplateName,omitempty"`
+	WorkflowTemplateName string            `json:"workflowTemplateName,omitempty"`
+	RunnerImage          string            `json:"runnerImage,omitempty"`
+	RunnerVersion        string            `json:"runnerVersion,omitempty"`
+	//+kubebuilder:validation:Required
+	TowerAuthSecret string `json:"towerAuthSecret"`
+	JobTTL          string `json:"jobTTL,omitempty"`
+	JobTags         string `json:"jobTags,omitempty"`
+	SkipTags        string `json:"skipTags,omitempty"`
 }
 
 // AnsibleJobStatus defines the observed state of AnsibleJob
