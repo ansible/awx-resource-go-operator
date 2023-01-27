@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -36,15 +37,9 @@ type AnsibleJobSpec struct {
 	RunnerVersion        string            `json:"runnerVersion,omitempty"`
 	//+kubebuilder:validation:Required
 	TowerAuthSecret string `json:"towerAuthSecret"`
-	JobTTL          string `json:"jobTTL,omitempty"`
+	JobTTL          *int   `json:"jobTTL,omitempty"`
 	JobTags         string `json:"jobTags,omitempty"`
 	SkipTags        string `json:"skipTags,omitempty"`
-}
-
-// AnsibleJobStatus defines the observed state of AnsibleJob
-type AnsibleJobStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
 }
 
 //+kubebuilder:object:root=true
@@ -55,8 +50,8 @@ type AnsibleJob struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   AnsibleJobSpec   `json:"spec,omitempty"`
-	Status AnsibleJobStatus `json:"status,omitempty"`
+	Spec   AnsibleJobSpec `json:"spec,omitempty"`
+	Status v1.PodStatus   `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
